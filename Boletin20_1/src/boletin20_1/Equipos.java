@@ -2,8 +2,8 @@ package boletin20_1;
 
 public class Equipos {
 
-    private int[][] datos = {{3, 4, 2}, {1, 2, 1}, {3, 0, 1}, {5, 1, 7}};
-    private String[] equipo = {"Celta", "Depor", "Malaga", "Barca"};
+    private int[][] datos = {{3, 4, 2}, {1, 2, 1}, {3, 0, 1},{4,2,1}};
+    private String[] equipo = {"Celta", "Depor", "Malaga","Barca"};
     private String[] xornada = {"Equipo/xornada", "X1", "X2", "X3"};
 
     public void visualizar() {
@@ -47,21 +47,25 @@ public class Equipos {
         int filas = datos[0].length;//invertir matriz(cambiar filar por columnas)
         int columnas = datos.length;//invertir matriz(cambiar filar por columnas)
         int goleador;
-        int[] notas = new int[datos.length];
+
         String equipogoleador = "";
         String xornadas = xornada[0];
         System.out.println("");
+        int[] goles = new int[equipo.length];
         for (int i = 0; i < filas; i++) {
             goleador = 0;
             for (int j = 0; j < columnas; j++) {
-                if (goleador < datos[j][i]) {//comprar los goles de cada equipo y ver el nombre del equipo
+                if (goleador < datos[j][i]) {
                     goleador = datos[j][i];
-                    equipogoleador = equipo[j];
-                    xornadas = xornada[i + 1];
-                }
+                }             
             }
-            
-            System.out.println(xornadas + " " + equipogoleador + ": " + goleador + " goles");
+            for (int a = 0; a < goles.length; a++) {
+                    if (goleador == datos[a][i]) {
+                        equipogoleador = equipo[a];
+                        xornadas = xornada[i + 1];                     
+                            System.out.println(xornadas + " " + equipogoleador + ": " + goleador + " goles");                       
+                    }
+            }
         }
 
     }
@@ -111,7 +115,7 @@ public class Equipos {
         }
         System.out.println("");
         System.out.println(xornadas + " " + equipogoleador + ": " + goleador + " goles");
-    
+
     }
 
     /*
@@ -162,7 +166,6 @@ public class Equipos {
         }
     }
      */
-
     public void buscarEquipoXornada(String nomeequipo, String nomexornada) {
         int filas = datos.length;
         int columnas = datos[0].length;
